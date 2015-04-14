@@ -40,14 +40,14 @@ Wanna do something if you are in the Member area?
 
 There are lots:
 
-WorkContext.IsMemberRequest()
-WorkContext.IsProviderRequest()
-WorkContext.IsDefaultRequest()
-WorkContext.IsNurseRequest()
-WorkContext.IsPartnerRequest()
-WorkContext.IsNonContentRequest()
-WorkContext.IsAreaRequest("Member")
-WorkContext.IsHomepageRequest()
+- WorkContext.IsMemberRequest()
+- WorkContext.IsProviderRequest()
+- WorkContext.IsDefaultRequest()
+- WorkContext.IsNurseRequest()
+- WorkContext.IsPartnerRequest()
+- WorkContext.IsNonContentRequest()
+- WorkContext.IsAreaRequest("Member")
+- WorkContext.IsHomepageRequest()
 
 How about checking if a feature is enabled!?
 
