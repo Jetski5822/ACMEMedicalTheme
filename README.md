@@ -26,3 +26,5 @@ The out of box terms are :
 - Partner
 
 you can use sitearea layer rules too to say, sitearea('nurse')
+
+Then to style, in Resources.cshtml you can specify what CSS you want to use based on site area.
