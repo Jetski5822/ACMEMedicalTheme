@@ -28,3 +28,33 @@ The out of box terms are :
 you can use sitearea layer rules too to say, sitearea('nurse')
 
 Then to style, in Resources.cshtml you can specify what CSS you want to use based on site area.
+
+## Work Context Helpers ##
+
+Trying to know where you are in a site and having to write lots of code each time is a pain, so I have added helpers so you dont have to...
+
+Wanna do something if you are in the Member area?
+
+    if (WorkContext.IsMemberRequest()) {
+    }
+
+There are lots:
+
+WorkContext.IsMemberRequest()
+WorkContext.IsProviderRequest()
+WorkContext.IsDefaultRequest()
+WorkContext.IsNurseRequest()
+WorkContext.IsPartnerRequest()
+WorkContext.IsNonContentRequest()
+WorkContext.IsAreaRequest("Member")
+WorkContext.IsHomepageRequest()
+
+How about checking if a feature is enabled!?
+
+    if (WorkContext.IsFeatureEnabled("Orchard.Search")) {
+    }
+
+Or checking if Cookies have been accepted?
+
+    if (WorkContext.HasAcceptedCookies()) {
+    }
