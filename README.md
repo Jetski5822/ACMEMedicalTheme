@@ -37,6 +37,9 @@ Wanna do something if you are in the Member area?
 
     if (WorkContext.IsMemberRequest()) {
     }
+    // same as
+    if (WorkContext.IsAreaRequest("Member")) {
+    }
 
 There are lots:
 
