@@ -1,0 +1,12 @@
+﻿@using ACME.Theme.Medical.Models
+@{
+    var themeSettingsPart = (ThemeSetting)Model.ThemeSetting;
+}
+<div id="noncontent-footer">
+    @if (HasText(themeSettingsPart.NonContentReferenceNumber)) {
+        <span>@themeSettingsPart.NonContentReferenceNumber</span>
+    }
+    @if (HasText(themeSettingsPart.NonContentPreparationDateText)) {
+        <span>@themeSettingsPart.NonContentPreparationDateText</span>
+    }
+</div>

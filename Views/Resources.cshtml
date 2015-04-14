@@ -1,0 +1,39 @@
+﻿@using ACME.Theme.Medical
+@using Orchard.Localization
+@using Orchard.UI.Resources;
+
+@{
+    var theme = WorkContext.CurrentTheme;
+
+    RegisterLink(new LinkEntry { Type = "image/x-icon", Rel = "shortcut icon", Href = Url.Content(theme.Location + "/" + theme.Path + "/Content/" + "favicon.ico") });
+    RegisterLink(new LinkEntry { Rel = "apple-touch-icon", Href = Url.Content(theme.Location + "/" + theme.Path + "/Content/" + "apple-touch-icon.png") });
+
+    SetMeta(new MetaEntry { Name = "viewport", Content = "width=device-width, initial-scale=1.0" });
+    SetMeta(httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1");
+
+    Script.Include("~/Core/Shapes/Scripts/html5.js").UseCondition("lt IE 9").AtHead();
+    Script.Require("Respond").UseCondition("lt IE 9").AtHead();
+    
+    Script.Require("bootstrap");
+    Script.Require("site");
+    
+    string area = "default";
+    if (WorkContext.IsMemberRequest()) {
+        area = "member";
+    }
+    if (WorkContext.IsProviderRequest()) {
+        //area = "provider";
+
+    }
+    if (WorkContext.IsNonContentRequest() || WorkContext.IsDefaultRequest()) {
+    }
+    if (WorkContext.IsHomepageRequest()) {
+    }
+
+    if (WorkContext.CurrentCultureInfo().TextInfo.IsRightToLeft) {
+        Style.Require(string.Format("site_{0}_rtl", area));
+    }
+    else {
+        Style.Require(string.Format("site_{0}", area));
+    }
+}

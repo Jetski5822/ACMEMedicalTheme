@@ -1,0 +1,7 @@
+﻿@using Orchard.Utility.Extensions
+@{
+    string name = Model.ContentField.DisplayName;
+}
+@if (HasText(name) && HasText(Model.Value)) {
+    <span class="text-field-@name.HtmlClassify()">@Model.Value</span>
+}

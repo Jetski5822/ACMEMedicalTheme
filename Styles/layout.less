@@ -1,0 +1,130 @@
+﻿html.boxed-layout {
+    #layout-main-container, #layout-tripel-container, #cookiebar {
+        .container;
+    }
+}
+
+#prelayout {
+    background: @gray-light;
+    border-bottom: 3px solid #a8a9ac;
+}
+
+#layout-main, #layout-tripel, #footer-quad {
+    .row;
+}
+
+#layout-content {
+    .make-sm-column(12);
+}
+
+.aside-1, .aside-2 {
+    #layout-content {
+        .make-sm-column(9);
+    }
+}
+
+.aside-12 {
+    #layout-content {
+        .make-sm-column(6);
+    }
+}
+
+#aside-first, #aside-second {
+    .make-sm-column(3);
+}
+
+.tripel-1, .tripel-2, .tripel-3 {
+    #tripel-first, #tripel-second, #tripel-third {
+        .make-sm-column(12);
+    }
+}
+
+.tripel-12, .tripel-13, .tripel-23 {
+    #tripel-first, #tripel-second, #tripel-third {
+        .make-sm-column(6);
+    }
+}
+
+.tripel-123 {
+    #tripel-first, #tripel-second, #tripel-third {
+        .make-sm-column(4);
+    }
+}
+
+.split-1, .split-2, .split-3, .split-4 {
+    + #layout-footer #footer-quad-first, + #layout-footer #footer-quad-second, + #layout-footer #footer-quad-third, + #layout-footer #footer-quad-fourth {
+        .make-sm-column(12);
+    }
+}
+
+.split-12, .split-13, .split-14, .split-23, .split-24, .split-34 {
+    + #layout-footer #footer-quad-first, + #layout-footer #footer-quad-second, + #layout-footer #footer-quad-third, + #layout-footer #footer-quad-fourth {
+        .make-sm-column(6);
+    }
+}
+
+.split-123, .split-124, .split-134, .split-234 {
+    + #layout-footer #footer-quad-first, + #layout-footer #footer-quad-second, + #layout-footer #footer-quad-third, + #layout-footer #footer-quad-fourth {
+        .make-sm-column(4);
+    }
+}
+
+.split-1234 {
+    + #layout-footer #footer-quad-first, + #layout-footer #footer-quad-second, + #layout-footer #footer-quad-third, + #layout-footer #footer-quad-fourth {
+        .make-sm-column(3);
+    }
+}
+
+#layout-footer {
+    background-color: @navbar-default-bg;
+
+    .navbar {
+        background-color: @navbar-default-bg;
+    }   
+}
+
+#noncontent-footer {
+    clear: left;
+    display: block;
+    font-size: @font-size-small;
+    margin: 10px 0;
+}
+
+#toTop{
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAABACAMAAABMUIWcAAAAdVBMVEUAAAAYntmzxM4YntmzxM4YntmzxM6zxM4YntmzxM6zxM6zxM4YntkYntkYntmzxM6zxM4YntkYntmzxM6zxM4Yntn////2+fvi8/v8/v6/5fXq7/Iio9u8y9Tg5+vT3eN0xemk2fGS0u1NteLH1Ns2q95cu+SszRl0AAAAFHRSTlMABvr06tfNml0kCvXqqp2JV0oeMhFBscEAAAF5SURBVEjHhVPZtoMgDETcqFq1Vtztfu//f2KhtYTUSuZBPMzAJCFhgKSMo4DzIIrLhK2xi9PaII13X3RS8BqBFwk6HtUrRNYlx6D+geBozgOPFbvF39y/cnnHUdSbKF4GfFvAtUlcOxCrCFKXIE1YiTYebTujjRI7nJum6R/Yw87x1LxwtjNlUKR5VGTbqs/JKhbjhtfUOL8XSBQEn6PzaCs4WPTKHEIBi8hkMD7ML0QR6TTdpSzdgpIsNfVY5HNTDUO2HNW0dNvTg0OPHj289PgDKpGHvh/movrFeiKTBpnwvvmDLxH8Az6+lyvsPYsP5Q+Ens07Feb+lcsSn9zE4WXgbwt8bSKkA0IJMpcgU/VFG/euu6ONCjtcejXf/9gjl4Bbo9FfJCBnUKRpUGzXqc/NKhYzSf5papiWxSQKAk1cp+WiwQjAov2YT1elAIvcZDDcTbD9FYIU0gnBKregokpNPhb53FTDUC1HNi3V9vTg0KNHDy89/k/rmn9XaUxrfAAAAABJRU5ErkJggg==') /*../Content/images/backToTop.png*/;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 32px;
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    text-indent: -99999px;
+    color: transparent;
+    display: none;
+    z-index: 500;
+    cursor: pointer;
+}
+/* add user icon before menu */
+.menuUserName > a:before { content: "\f007"; font-family: "FontAwesome"; margin-right: 5px; }
+
+.widget-search-form { float: none !important; }
+
+.user-display{
+    margin-top: 20px;
+
+    .sign-out {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAhCAMAAAAIybBlAAAAV1BMVEUAAACfYiSfYiSfYiSfYiQgFAd/Th0HBQIJBQIRCwQYDwWfYiSfYiQAcLoAcLqfYiQAcLoLBwMTDAQAcLoAcLoAcLoAcLoiFQgAcLoAcLoAcLoAcLoAcLohUXoDAAAAHHRSTlMACBoCE2QhvLSHag4F8xoRsZ2aat2YeV8TvjcnLGeODwAAAJlJREFUKM+tj8kSgjAMQE0b6N4Korjw/99pJMEeysFxeKfkTdbTz+gIRNTfXENAIoDWYgC9sdZ4BL2JwfWEG0TF4J1SXaeU8yF+DBTTs+lNgdWgpXwcyVncN22XTJ5nnly3K8XbmwvrFwWx8BfNp8eSzwuTNvMkw4hIEtzIiHhwcGGTE9df73nfrEzLVLtEpTpZeNXt7YX/8gbHcgyyx8PBxQAAAABJRU5ErkJggg==') /*../Content/images/user-control-icons.png*/ no-repeat scroll 0 -17px transparent;
+        padding-left: 20px;
+    }
+}
+
+.content-item img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* RTL Support */
+html.rtl ol, html.rtl ul { padding-right: 0; }

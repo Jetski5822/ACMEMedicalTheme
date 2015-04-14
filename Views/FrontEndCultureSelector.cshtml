@@ -1,0 +1,57 @@
+﻿@using System.Globalization
+@using System.Text.RegularExpressions
+@using Orchard.Localization.Services
+@{
+    var cultureManager = WorkContext.Resolve<ICultureManager>();
+
+    IList<string> cultures = cultureManager.ListCultures().ToList();
+    var currentCulture = WorkContext.CurrentCulture;
+    cultures.Remove(currentCulture);
+
+    var routeData = new RouteValueDictionary(ViewContext.RouteData.Values);
+    var queryString = ViewContext.HttpContext.Request.QueryString;
+    if (queryString != null) {
+        foreach (string key in queryString.Keys) {
+            if (key != null && !routeData.ContainsKey(key)) {
+                var value = queryString[key];
+                routeData[key] = queryString[key];
+            }
+        }
+    }
+
+    if (routeData.ContainsKey("culture")) {
+        routeData.Remove("culture");
+    }
+}
+@{
+    var formatCulture = new Func<string, string>(s => {
+        CultureInfo cultureInfo = CultureInfo.GetCultureInfo(s);
+
+        //Remove bracketed text
+        var name = Regex.Replace(cultureInfo.NativeName, "\\(.*\\)", "");
+
+        // Force upper first char
+        if (name.Length > 0) {
+            name = new string(name.ToCharArray().Select((c, i) => i == 0 ? c.ToString().ToUpper()[0] : c).ToArray());
+        }
+        return name;
+    });
+}
+@if (cultures.Any()) {
+    <div id="culture-selector" class="dropdown pull-right visible-sm-block visible-md-block visible-lg-block">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            @formatCulture(currentCulture)
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+            @foreach (var culture in cultures) {
+                <li>
+                    @{
+                var data = new RouteValueDictionary(routeData) { { "culture", culture } };
+                    }
+                    @Display.ActionLink(Value: @formatCulture(culture), Action: (string)data["action"], Controller: (string)data["controller"], RouteValues: data)
+                </li>
+            }
+        </ul>
+    </div>
+}

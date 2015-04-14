@@ -1,0 +1,10 @@
+﻿﻿@model ACME.Theme.Medical.Models.BingThemeSettingsPart
+
+<fieldset>
+    <legend>@T("Bing Options")</legend>
+    <div>
+        @Html.LabelFor(m => m.SiteVerificationCode, T("Site Verification Code"))
+        @Html.TextBoxFor(m => m.SiteVerificationCode)
+        <span class="hint">@T("For more information http://www.bing.com/webmaster/help/getting-started-checklist-66a806de ")</span>
+    </div>
+</fieldset>

@@ -1,0 +1,42 @@
+<Placement>
+  <Place Fields_TaxonomyField-SiteArea="-"
+         Fields_TaxonomyField-Tags="-"
+         Fields_TaxonomyField-Drug="-"
+         Parts_Common_Metadata="-"
+         />
+
+  <Match DisplayType="Detail">
+    <Place Fields_Common_Text-Description="/Head;Alternate=SearchEngine_GoogleMetaDescription"
+           Fields_TaxonomyField-Tags="/Head;Alternate=SearchEngine_KeywordsMeta"
+           Parts_Localization_ContentTranslations="/Header:5"
+           Fields_Common_Text-ReferenceNumber="Footer:0"
+           Fields_DateTime-PreparationDate="Footer:1" />
+  </Match>
+
+  <Match ContentType="Page">
+    <Match DisplayType="Detail">
+      <Place Parts_Common_Metadata="/Footer:15"/>
+    </Match>
+  </Match>
+
+  <Match ContentType="ModalDialog">
+    <Place Fields_TaxonomyField-ModalType="-"
+           Fields_Common_Text="-"/>
+  </Match>
+
+  <Match ContentType="AreaLandingPage">
+    <Place Parts_Title="-"
+           Fields_ContentPicker-Areas="Content:1;Alternate=Section_LandingPage_AreaDescriptions"/>
+    
+    <Match DisplayType="Detail">
+      <Place Parts_Common_Metadata="/Footer:15"/>
+    </Match>
+  </Match>
+
+  <Match ContentType="AreaDescription">
+    <Place Fields_Link="Content:15;Alternate=Section_LandingPage_AreaDescription_More"
+           Fields_MediaLibraryPicker-Image="PreHeader:0;Alternate=Section_LandingPage_AreaDescription_Image"
+           Fields_Enumeration-ImageLocation="-"/>
+  </Match>
+  
+</Placement>

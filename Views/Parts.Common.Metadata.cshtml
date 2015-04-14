@@ -1,0 +1,23 @@
+﻿@using System.Globalization
+@using ACME.Theme.Medical.Models
+@using Orchard.ContentManagement
+@{
+    var themeSettingsPart = WorkContext.CurrentSite.As<ThemeSettingsPart>().For(WorkContext.CurrentCulture);
+
+    DateTime? dateTime = (DateTime?)Model.ContentPart.PublishedUtc;
+
+    if (!dateTime.HasValue) {
+        dateTime = (DateTime?) Model.ContentPart.ModifiedUtc;
+    }
+
+    var format = HasText(themeSettingsPart.PublishedDateFormat) ? themeSettingsPart.PublishedDateFormat : "MMMM yyyy";
+
+    var displayValue = dateTime.Value.ToString(format, new CultureInfo(WorkContext.CurrentCulture));
+
+    if (themeSettingsPart.LowercasePublishedDate) {
+        displayValue = displayValue.ToLowerInvariant();
+    }
+}
+<div class="published">@themeSettingsPart.PublishedDateText
+    @displayValue
+</div>

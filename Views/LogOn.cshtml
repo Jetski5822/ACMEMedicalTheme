@@ -1,0 +1,67 @@
+﻿@using ACME.Theme.Medical
+@using Orchard.ContentManagement
+@{
+    var userCanRegister = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().UsersCanRegister;
+    var enableLostPassword = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().EnableLostPassword;
+
+    int colNumber = 10;
+    
+    // TODO: Insert items here?
+    if (WorkContext.IsOneKeyEnabled()) {
+        colNumber = 5;
+        Model.ThirdPartyAuthentication.Add(New.Parts_OneKeyConnect_Logon(DisplayErrors: false));
+    }
+    if (WorkContext.IsDocCheckEnabled()) {
+        colNumber = 5;
+        Model.ThirdPartyAuthentication.Add(New.Parts_DocCheck_Logon(DisplayErrors: false));
+    }
+}
+@if (Model.Title == "Access Denied") {
+    <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="fa fa-times-circle"></i>&nbsp;&nbsp;@T("You do not have permission to complete your request.")
+    </div>
+}
+@if (Html.ValidationSummary() != null) {
+    <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <i class="fa fa-times-circle"></i>&nbsp;&nbsp;@T("Login was unsuccessful. Please correct the errors and try again.")
+        <p>@Html.ValidationSummary()</p>
+    </div>
+}
+<h1 class="page-title col-md-offset-1">@Html.TitleForPage(T("Sign In"))</h1>
+<p class="col-md-offset-1">
+    @T("Please enter your username and password.")
+    @if (userCanRegister) { @Html.ActionLink(T("Register").Text, "Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }) @T(" if you don't have an account.") }
+    @if (enableLostPassword) { <text> </text> @Html.ActionLink(T("Lost your Password?").Text, "RequestLostPassword") }
+</p>
+<div class="well col-md-offset-1 col-md-@colNumber">
+    @using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }))) {
+        <fieldset class="login-form group">
+            <legend>@T("Account Information")</legend>
+            <div class="form-group">
+                <label for="username-email">@T("Username")</label>
+                @Html.TextBox("userNameOrEmail", "", new { id = "username-email", autofocus = "autofocus", @class = "validate[required]" })
+                @Html.ValidationMessage("userNameOrEmail")
+            </div>
+            <div class="form-group">
+                <label for="password">@T("Password")</label>
+                @Html.Password("password", null, new { @class = "validate[required]" })
+                @Html.ValidationMessage("password")
+            </div>
+            <div class="checkbox">
+                <label class="forcheckbox" for="remember-me">
+                    @Html.CheckBox("rememberMe", new { id = "remember-me" }) @T("Remember Me")
+                </label>
+            </div>
+            <div class="form-group">
+                <button class="primaryAction" type="submit">@T("Sign In")</button>
+            </div>
+        </fieldset>
+    }
+</div>
+@if (Model.ThirdPartyAuthentication != null) {
+    <div class="well col-md-@colNumber">
+        @Display(Model.ThirdPartyAuthentication)
+    </div>
+}

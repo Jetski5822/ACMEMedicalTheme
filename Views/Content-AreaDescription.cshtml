@@ -1,0 +1,36 @@
+﻿@using Orchard.Utility.Extensions;
+@{
+    if (Model.Title != null) {
+        Layout.Title = Model.Title;
+    }
+
+    Model.Classes.Add("content-item");
+    
+    var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+    Model.Classes.Add(contentTypeClassName);
+
+    var imageLocation = ((string[])Model.ContentItem.AreaDescriptionPart.ImageLocation.SelectedValues).Single();
+
+    Model.Classes.Add("area-description-" + imageLocation.ToLower());
+    
+    var tag = Tag(Model, "article");
+}
+@tag.StartElement
+    @if (Model.PreHeader != null) {
+        @Display(Model.PreHeader)
+    }
+    <header>
+        @Display(Model.Header)
+        @if (Model.Meta != null) {
+            <div class="metadata">
+                @Display(Model.Meta)
+            </div>
+        }
+    </header>
+    @Display(Model.Content)
+    @if(Model.Footer != null) {
+        <footer>
+            @Display(Model.Footer)
+        </footer>
+    }
+@tag.EndElement

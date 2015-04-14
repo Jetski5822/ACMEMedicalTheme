@@ -1,0 +1,103 @@
+﻿﻿@model ACME.Theme.Medical.Models.ThemeSettingsPart
+
+<fieldset>
+    <legend>@T("Generic Theme Options")</legend>
+    <div>
+        @Html.LabelFor(m => m.HeaderLogo, T("Header Logo Image Url"))
+        @Html.TextBoxFor(m => m.HeaderLogo)
+        <span class="hint">@T("The URL of the logo.")</span>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HeaderLogoUrl, T("Header Logo Url"))
+        @Html.TextBoxFor(m => m.HeaderLogoUrl)
+        <span class="hint">@T("The URL to go to when the logo is clicked.")</span>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.FooterLogo, T("Footer Logo Image Url"))
+        @Html.TextBoxFor(m => m.FooterLogo)
+        <span class="hint">@T("The URL of the logo.")</span>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.FooterLogoUrl, T("Footer Logo Url"))
+        @Html.TextBoxFor(m => m.FooterLogoUrl)
+        <span class="hint">@T("The URL to go to when the logo is clicked.")</span>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.FooterAudienceMessage, T("Footer Audience Message"))
+        @Html.TextBoxFor(m => m.FooterAudienceMessage)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.FooterCopyrightsMessage, T("Footer Copyrights Message"))
+        @Html.TextAreaFor(m => m.FooterCopyrightsMessage)
+    </div>
+    <div>
+        @Html.EditorFor(m => m.DisplayPublishedDate)
+        <label class="forcheckbox" for="@Html.FieldIdFor(m => m.DisplayPublishedDate)">@T("Display Published Date")</label>
+        <span class="hint">@T("Display the published date in the footer.")</span>
+    </div>
+    <div data-controllerid="@Html.FieldIdFor(m => m.DisplayPublishedDate)">
+        <div>
+            @Html.LabelFor(m => m.PublishedDateText, T("Content Published Date Text"))
+            @Html.TextBoxFor(m => m.PublishedDateText)
+            <span class="hint">@T("The published date text for content related pages, ommiting the Date, i.e. 'Published Date'")</span>
+        </div>
+        <div>
+            @Html.LabelFor(m => m.PublishedDateFormat, T("Content Published Date Format"))
+            @Html.TextBoxFor(m => m.PublishedDateFormat)
+            <span class="hint">@T("The published date format, the default being 'MMMM yyyy'. To change this please refer to date time formats.")</span>
+        </div>
+        <div>
+            @Html.EditorFor(m => m.LowercasePublishedDate)
+            <label class="forcheckbox" for="@Html.FieldIdFor(m => m.LowercasePublishedDate)">@T("Lowercase Content Published Date")</label>
+        </div>
+        <div>
+            @Html.LabelFor(m => m.NonContentPublishedDateText, T("Non Content Published Date Text"))
+            @Html.TextBoxFor(m => m.NonContentPublishedDateText)
+            <span class="hint">@T("The published date text for non content pages, i.e. 'Published Date: March 2014'")</span>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.NonContentReferenceNumber, T("Non Content Reference Number"))
+        @Html.TextBoxFor(m => m.NonContentReferenceNumber)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.NonContentPreparationDateText, T("Non Content Preparation Date Text"))
+        @Html.TextBoxFor(m => m.NonContentPreparationDateText)
+    </div>
+    <div>
+        @Html.EditorFor(m => m.CookiebarEnabled)
+        <label class="forcheckbox" for="@Html.FieldIdFor(m => m.CookiebarEnabled)">@T("Enable Cookiebar")</label>
+    </div>
+    <div data-controllerid="@Html.FieldIdFor(m => m.CookiebarEnabled)">
+        <div>
+            @Html.LabelFor(m => m.CookiebarText, T("Cookie Bar Text"))
+            @Html.TextAreaFor(m => m.CookiebarText)
+            <span class="hint">@T("The text for the cookie bar.")</span>
+        </div>
+        <div>
+            @Html.LabelFor(m => m.CookiebarYesText, T("Cookiebar Yes Text"))
+            @Html.TextBoxFor(m => m.CookiebarYesText)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.CookiebarNoText, T("Cookiebar No Text"))
+            @Html.TextBoxFor(m => m.CookiebarNoText)
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>@T("Member Theme Options")</legend>
+    <div>
+        @Html.LabelFor(m => m.MemberLogo, T("Logo"))
+        @Html.TextBoxFor(m => m.MemberLogo)
+        <span class="hint">@T("The URL of the logo.")</span>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>@T("Provider Theme Options")</legend>
+    <div>
+        @Html.LabelFor(m => m.ProviderLogo, T("Logo"))
+        @Html.TextBoxFor(m => m.ProviderLogo)
+        <span class="hint">@T("The URL of the logo.")</span>
+    </div>
+</fieldset>
+@Html.HiddenFor(m => m.Culture)

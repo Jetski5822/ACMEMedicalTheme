@@ -1,0 +1,10 @@
+﻿@using ACME.Theme.Medical.Models
+@using Orchard.ContentManagement
+@{
+    var themeSettingsPart = WorkContext.CurrentSite.As<ThemeSettingsPart>().For(WorkContext.CurrentCulture);
+}
+@if (HasText(themeSettingsPart.NonContentPublishedDateText)) {
+<div class="published">
+    @themeSettingsPart.NonContentPublishedDateText
+</div>
+}

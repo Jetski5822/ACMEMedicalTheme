@@ -1,0 +1,12 @@
+﻿<div id="modal-header">
+    @Display(Model.Header)
+</div>
+<div id="modal-content">
+    @Display(Model.Content)
+</div>
+<div id="modal-close">
+    @Model.ContentItem.ModalDialogPart.CancelButtonText.Value
+</div>
+<div id="modal-continue">
+    @Model.ContentItem.ModalDialogPart.ContinueButtonText.Value
+</div>

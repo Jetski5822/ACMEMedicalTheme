@@ -1,0 +1,35 @@
+﻿.dropdown-menu ul {
+    left: 100%;
+    top: 0;
+}
+
+.dropdown .dropdown:hover > .dropdown-menu,
+.dropdown .dropdown .dropdown:hover > .dropdown-menu,
+.dropdown .dropdown .dropdown .dropdown:hover > .dropdown-menu,
+.dropdown .dropdown .dropdown .dropdown .dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu i {
+    line-height: @line-height-base;
+}
+
+.navbar-brand {
+    padding-left: 0;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    margin-top: 0;
+}
+.navbar-nav>li>.dropdown-menu .dropdown-menu {
+    margin-top: 0;
+}
+
+.navbar-wrapper {
+    .search-form {
+        display: block;
+        @media (min-width: @screen-sm-min) {
+            display: none;
+        }
+    }
+}

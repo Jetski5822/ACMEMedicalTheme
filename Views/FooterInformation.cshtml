@@ -1,0 +1,15 @@
+﻿@using ACME.Theme.Medical.Models
+@{
+    var themeSettingsPart = (ThemeSetting)Model.ThemeSetting;
+}
+<div class="footer-messages pull-left">
+    @if (HasText(themeSettingsPart.FooterAudienceMessage)) {
+        <p class="audience-message">@themeSettingsPart.FooterAudienceMessage</p>
+    }
+    @if (HasText(themeSettingsPart.FooterCopyrightsMessage)) {
+        var message = new HtmlString(themeSettingsPart.FooterCopyrightsMessage.Replace("\n", "</p><p>"));
+        <div class="copyrights-message">
+            <p>@message</p>
+        </div>
+    }
+</div>

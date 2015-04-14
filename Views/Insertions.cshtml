@@ -1,0 +1,56 @@
+@using ACME.Theme.Medical
+@using ACME.Theme.Medical.Models
+@using Orchard.ContentManagement
+@{
+    var themeSettingsPart = WorkContext.CurrentSite.As<ThemeSettingsPart>().For(WorkContext.CurrentCulture);
+
+    if (themeSettingsPart.CookiebarEnabled && WorkContext.CurrentUser == null) {
+        WorkContext.Layout.PreLayout.Add(New.CookieBar(ThemeSetting: themeSettingsPart), "0");
+    }
+    
+    string headerAreaUrl = string.Empty;
+    string headerLogoUrl = themeSettingsPart.HeaderLogoUrl;
+    string headerLogo = themeSettingsPart.HeaderLogo;
+    
+    if (!WorkContext.IsHomepageRequest()) {
+        if (WorkContext.IsMemberRequest()) {
+            Html.AddPageClassNames("member");
+
+            headerAreaUrl = themeSettingsPart.MemberLogo;
+        }
+        else if (WorkContext.IsProviderRequest()) {
+            Html.AddPageClassNames("provider");
+
+            headerAreaUrl = themeSettingsPart.ProviderLogo;
+        }
+    }
+    else {
+        Html.AddPageClassNames("landing-page");
+    }
+
+    if (WorkContext.IsNonContentRequest()) {
+        if (WorkContext.IsFeatureEnabled("Orchard.Localization.CultureSelector")) {
+            WorkContext.Layout.Header.Add(New.FrontEndCultureSelector(), "4");
+        }
+        if (themeSettingsPart.DisplayPublishedDate) {
+            WorkContext.Layout.Footer.Add(New.NonContent_PublishedDate(), "15");
+        }
+        if (HasText(themeSettingsPart.NonContentReferenceNumber) || HasText(themeSettingsPart.NonContentPreparationDateText)) {
+            WorkContext.Layout.Content.Add(New.NonContent_FooterContent(ThemeSetting: themeSettingsPart), "15");
+        }
+    }
+
+    WorkContext.Layout.Header.Add(New.HeaderLogo(Logo: headerLogo, LogoUrl: headerLogoUrl), "0");
+    WorkContext.Layout.Header.Add(New.User(), "1");
+    WorkContext.Layout.Header.Add(New.HeaderAreaLogo(Url: headerAreaUrl), "2");
+
+    if (WorkContext.IsFeatureEnabled("Orchard.Search")) {
+        WorkContext.Layout.Header.Add(New.HeaderSearch(), "5");
+    }
+    
+    WorkContext.Layout.Footer.Add(New.FooterInformation(ThemeSetting: themeSettingsPart), "0");
+    WorkContext.Layout.Footer.Add(New.FooterImage(ThemeSetting: themeSettingsPart), "5");
+    
+    /* Bootstrap Modal implementation */
+    WorkContext.Layout.Footer.Add(New.ModalDialog(), "5");
+}

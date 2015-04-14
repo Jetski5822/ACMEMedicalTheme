@@ -1,0 +1,23 @@
+﻿@using ACME.Theme.Medical.Models
+@using Orchard.ContentManagement
+@{
+    var googleSettingsPart = WorkContext.CurrentSite.As<GoogleThemeSettingsPart>();
+}
+@if (HasText(googleSettingsPart.TrackingId)) {
+<script>
+    // Google analytics is only setup at this point, it will be triggered later based on the cookie policy.
+    @if (googleSettingsPart.IsDebug) {
+    <text>window.ga_debug = {trace: true};</text>
+    }
+        
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    window.enableGA = function() {
+        ga('create', '@googleSettingsPart.TrackingId', { 'siteSpeedSampleRate': 100 });
+        ga('send', 'pageview');
+    }
+</script>
+}

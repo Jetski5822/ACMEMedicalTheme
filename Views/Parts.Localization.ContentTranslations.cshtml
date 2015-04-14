@@ -1,0 +1,37 @@
+﻿@using System.Globalization
+@using System.Text.RegularExpressions
+@using Orchard.Localization.Models
+@using System.Linq;
+@using Orchard.Mvc.Html
+
+@{
+    IEnumerable<LocalizationPart> localizations = Model.Localizations;
+
+    var formatCulture = new Func<string, string>(s => {
+        CultureInfo cultureInfo = CultureInfo.GetCultureInfo(s);
+
+        //Remove bracketed text
+        var name = Regex.Replace(cultureInfo.NativeName, "\\(.*\\)", "");
+
+        // Force upper first char
+        if (name.Length > 0) {
+            name = new string(name.ToCharArray().Select((c, i) => i == 0 ? c.ToString().ToUpper()[0] : c).ToArray());
+        }
+        return name;
+    });
+}
+@if (localizations != null && localizations.Any()) {
+    <div id="culture-selector" class="dropdown pull-right visible-sm-block visible-md-block visible-lg-block">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            @formatCulture((string)Model.Culture)
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+            @foreach (var localization in localizations) {
+                <li>
+                    <a href="@Url.ItemDisplayUrl(localization)">@formatCulture(localization.Culture.Culture)</a>
+                </li>
+            }
+        </ul>
+    </div>
+}

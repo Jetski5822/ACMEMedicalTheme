@@ -1,0 +1,24 @@
+﻿@using ACME.Theme.Medical.Models
+@{
+    var themeSettingsPart = (ThemeSetting)Model.ThemeSetting;
+    var showButtonClass = ((HasText(themeSettingsPart.CookiebarYesText)) || (HasText(themeSettingsPart.CookiebarNoText)));
+    
+    Model.Id = "cookiebar"; 
+    
+    var tag = Tag(Model, "div");
+}
+@tag.StartElement
+    <span id="cookiebar-content">
+        @themeSettingsPart.CookiebarText
+    </span>
+    @if (showButtonClass) {
+        <span id="cookiebar-buttons">
+            @if (HasText(themeSettingsPart.CookiebarNoText)) {
+                <a class="btn btn-default" href="#" role="button" id="cookiebar-button-no">@themeSettingsPart.CookiebarNoText</a>
+            }
+            @if (HasText(themeSettingsPart.CookiebarYesText)) {
+                <a class="btn btn-default" href="#" role="button" id="cookiebar-button-yes">@themeSettingsPart.CookiebarYesText</a>
+            }
+        </span>
+    }
+@tag.EndElement

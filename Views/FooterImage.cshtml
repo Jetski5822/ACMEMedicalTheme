@@ -1,0 +1,9 @@
+﻿@using ACME.Theme.Medical.Models
+@{
+    var themeSettingsPart = (ThemeSetting)Model.ThemeSetting;
+}
+@if (HasText(themeSettingsPart.FooterLogo)) {
+    <a href="@themeSettingsPart.FooterLogoUrl" class="logo pull-right" data-external-type="sanofi">
+        <img class="img-responsive" src="@themeSettingsPart.FooterLogo">
+    </a>
+}

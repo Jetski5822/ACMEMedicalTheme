@@ -1,0 +1,15 @@
+﻿@using ACME.Theme.Medical.Models
+@using Orchard.ContentManagement
+@{
+    var googleSettingsPart = WorkContext.CurrentSite.As<GoogleThemeSettingsPart>();
+}
+<meta name="robots" content="index, follow, archive" />
+@if (HasText(googleSettingsPart.SiteVerificationCode)) {
+    <meta name="google-site-verification" content="@googleSettingsPart.SiteVerificationCode" />
+}
+@if (googleSettingsPart.NoTranslate) {
+    <meta name="google" content="notranslate" />
+}
+@if (googleSettingsPart.NoSiteLinksSearchBox) {
+    <meta name="google" content="nositelinkssearchbox" />
+}

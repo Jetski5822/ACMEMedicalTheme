@@ -1,0 +1,34 @@
+﻿@using Orchard.Fields.Settings
+@using Orchard.Utility.Extensions;
+@{
+    string name = Model.ContentField.DisplayName;
+    LinkFieldSettings settings = Model.ContentField.PartFieldDefinition.Settings.GetModel<LinkFieldSettings>();
+    string text = Model.ContentField.Text;
+    switch(settings.LinkTextMode) {
+        case LinkTextMode.Static:
+            text = settings.StaticText;
+            break;
+        case LinkTextMode.Url:
+            text = Model.ContentField.Value;
+            break;
+        case LinkTextMode.Optional:
+            if (String.IsNullOrWhiteSpace(text)) {
+                text = Model.ContentField.Value;
+            }
+            break;
+    }
+
+    var imageLocation = ((string[])Model.ContentItem.AreaDescriptionPart.ImageLocation.SelectedValues).Single().ToLower();
+    if (imageLocation == "right") {
+        imageLocation = "left";
+    }
+    else {
+        imageLocation = "right";
+    }
+}
+<a href="@Model.ContentField.Value"
+    @if (!string.IsNullOrWhiteSpace(Model.ContentField.Target)) { <text> target="@Model.ContentField.Target" </text> }
+   class="btn btn-default pull-@imageLocation"
+   role="button">
+    @text
+</a>

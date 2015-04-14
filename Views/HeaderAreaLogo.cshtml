@@ -1,0 +1,8 @@
+﻿@{
+    var url = (string) Model.Url;
+}
+@if (HasText(url)) {
+    <div id="header-area-logo" class="pull-left visible-sm-block visible-md-block visible-lg-block">
+        <img class="img-responsive" src="@url">
+    </div>
+}

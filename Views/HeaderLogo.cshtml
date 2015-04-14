@@ -1,0 +1,9 @@
+﻿@{
+    string logo = Model.Logo;
+    string logoUrl = Model.LogoUrl;
+}
+@if (HasText(logo)) {
+    <a href="@logoUrl" id="header-logo" class="pull-left">
+        <img class="img-responsive" src="@logo" >
+    </a>
+}

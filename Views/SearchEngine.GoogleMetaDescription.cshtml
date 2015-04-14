@@ -1,0 +1,4 @@
+﻿@using ACME.Theme.Medical
+@if (HasText(Model.Value)) {
+    <meta name="description" content="@(((string)Model.Value.ToString()).Truncate(155))">
+}

@@ -1,0 +1,6 @@
+﻿@{
+    var terms = (IEnumerable<Orchard.Taxonomies.Models.TermPart>)Model.Terms;
+}
+@if (Model.Terms.Count > 0) {
+    <meta name="keywords" content="@(new HtmlString(string.Join(", ", terms.Select(t => t.Name))))" />
+}

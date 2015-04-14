@@ -1,0 +1,17 @@
+﻿@{
+    var name = T(Model.ContentField.DisplayName);
+
+    var displayDateTime = Model.ContentField.DateTime != DateTime.MinValue;
+}
+@if (displayDateTime) {
+<span class="preparation-date">
+    @if (HasText(name)) {
+        <span class="name">@name:</span>
+    }
+    @if (displayDateTime) {
+        <span class="datetime value">
+            @Display.DateTime(DateTimeUtc: Model.ContentField.DateTime, CustomFormat: T("MMMM yyyy"))
+        </span>
+    }
+</span>
+}

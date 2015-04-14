@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+@using Orchard.Localization
+@{
+    string title = Convert.ToString(Model.Title);
+    string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+    bool isRtl = WorkContext.CurrentCultureInfo().TextInfo.IsRightToLeft;
+    Html.AddPageClassNames("dir-" + (isRtl ? "rtl" : "ltr"));
+    
+    Display.Resources();
+}
+<html lang="@WorkContext.CurrentCulture" class="static @Html.ClassForPage() boxed-layout floating-nav" dir="@(isRtl?"rtl":"ltr")">
+
+<head>
+    <meta charset="utf-8" />
+    <title>@Html.Title(siteName, title)</title>
+    @Display(New.SearchEngine_GoogleMetaInformation())
+    @Display(New.SearchEngine_BingMetaInformation())
+    @Display(Model.Head)
+
+    <script type="text/javascript">
+        (function (d) { d.className = "dyn" + d.className.substring(6, d.className.length); })(document.documentElement);
+    </script>
+    <script>window.isRTL = @(isRtl.ToString().ToLowerInvariant());</script>
+    @Display(New.Analytics_Google())
+</head>
+
+<body class="@Html.ClassForPage()">
+    @Display(Model.Body)
+    @Display(Model.Tail)
+</body>
+</html>
