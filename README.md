@@ -19,10 +19,10 @@ Within any site you might want to style you site differently depending on the ar
 
 The out of box terms are :
 
-Default
-Provider
-Nurse
-Member
-Partner
+- Default
+- Provider
+- Nurse
+- Member
+- Partner
 
 you can use sitearea layer rules too to say, sitearea('nurse')
