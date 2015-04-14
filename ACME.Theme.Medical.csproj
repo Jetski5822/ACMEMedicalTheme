@@ -451,16 +451,7 @@
     <Content Include="Views\Fields.DateTime-PreparationDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Section.LandingPage.AreaDescriptions.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Section.LandingPage.AreaDescription.More.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Content-AreaDescription.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Section.LandingPage.AreaDescription.Image.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Parts.Common.Metadata.cshtml" />
