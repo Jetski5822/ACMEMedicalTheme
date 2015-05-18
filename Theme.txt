@@ -2,7 +2,7 @@ Name: ACME Medical
 Author: Nicholas Mayne
 Website: https://github.com/Jetski5822/ACMEMedicalTheme
 Description: A theme for the fictitious medical company ACME Medical
-Version: 1.0.0.0
+Version: 1.0.0
 Tags: Medical
 Zones: Header, Navigation, Featured, BeforeMain, AsideFirst, Messages, BeforeContent, Content, AfterContent, AsideSecond, AfterMain, TripelFirst, TripelSecond, TripelThird, NavigationFooter, FooterQuadFirst, FooterQuadSecond, FooterQuadThird, FooterQuadFourth, Footer
 Dependencies: Orchard.Alias, Orchard.Taxonomies, Orchard.Widgets
