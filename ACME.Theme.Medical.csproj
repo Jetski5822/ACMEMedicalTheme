@@ -81,7 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\apple-touch-icon.png" />
-    <Content Include="Content\favicon.ico" />
     <Content Include="Content\images\backToTop.png" />
     <Content Include="Content\images\nyroModal\ajaxLoader.gif" />
     <Content Include="Content\images\nyroModal\close.gif" />

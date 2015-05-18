@@ -1,11 +1,9 @@
-﻿using JetBrains.Annotations;
-using Orchard.ContentManagement;
+﻿using Orchard.ContentManagement;
 using Orchard.ContentManagement.Handlers;
 using Orchard.Localization;
 using ACME.Theme.Medical.Models;
 
 namespace ACME.Theme.Medical.Handlers {
-    [UsedImplicitly]
     public class GoogleThemeSettingsPartHandler : ContentHandler {
         public GoogleThemeSettingsPartHandler() {
             Filters.Add(new ActivatingFilter<GoogleThemeSettingsPart>("Site"));

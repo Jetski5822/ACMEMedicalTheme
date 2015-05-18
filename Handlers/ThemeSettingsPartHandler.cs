@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using JetBrains.Annotations;
 using Orchard;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Handlers;
@@ -7,7 +6,6 @@ using Orchard.Localization;
 using ACME.Theme.Medical.Models;
 
 namespace ACME.Theme.Medical.Handlers {
-    [UsedImplicitly]
     public class ThemeSettingsPartHandler : ContentHandler {
         private readonly IWorkContextAccessor _workContextAccessor;
 

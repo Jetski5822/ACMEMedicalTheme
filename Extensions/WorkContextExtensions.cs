@@ -46,19 +46,25 @@ namespace ACME.Theme.Medical {
         }
 
         public static bool IsAreaRequest(this WorkContext workContext, string area) {
+            var siteArea = workContext.GetAreaName();
+
+            return !string.IsNullOrEmpty(siteArea) && siteArea.Equals(area, System.StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static string GetAreaName(this WorkContext workContext) {
             var requestPath = workContext.HttpContext.Request.Path.TrimStart('/').ToLowerInvariant();
 
             var contentItem = GetByPath(workContext, requestPath);
 
             if (contentItem == null)
-                return false;
+                return null;
 
             if (contentItem.ContentItem.Parts.All(p => p.TypePartDefinition.PartDefinition.Name != "PageMetadataPart"))
-                return false;
+                return null;
 
-            var siteArea = ((IEnumerable<TermPart>)((dynamic)contentItem).PageMetadataPart.SiteArea.Terms).Single();
+            var siteArea = ((IEnumerable<TermPart>)((dynamic)contentItem).PageMetadataPart.SiteArea.Terms).SingleOrDefault();
 
-            return siteArea.Name.Equals(area, System.StringComparison.OrdinalIgnoreCase);
+            return siteArea != null ? siteArea.Name : null;
         }
 
         public static IContent GetByPath(WorkContext workContext, string aliasPath) {

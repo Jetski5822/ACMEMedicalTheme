@@ -1,11 +1,9 @@
-﻿using JetBrains.Annotations;
-using Orchard.ContentManagement;
+﻿using Orchard.ContentManagement;
 using Orchard.ContentManagement.Handlers;
 using Orchard.Localization;
 using ACME.Theme.Medical.Models;
 
 namespace ACME.Theme.Medical.Handlers {
-    [UsedImplicitly]
     public class BingThemeSettingsPartHandler : ContentHandler {
         public BingThemeSettingsPartHandler() {
             Filters.Add(new ActivatingFilter<BingThemeSettingsPart>("Site"));
