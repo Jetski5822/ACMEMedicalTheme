@@ -13,6 +13,15 @@ ACME Medical Theme for Orchard is for a fictitious company.
 10. Footer all configurable from the Theme Settings admin 
 11. Uses LESS 
 
+## To Use ##
+
+First Clone:
+git clone https://github.com/Jetski5822/ACMEMedicalTheme.git ACME.Theme.Medical
+
+*Note: make sure the folder the theme is in is called ACME.Theme.Medical*
+
+Second, Enable!
+
 ## RTL ##
 
 This theme will inject a RTL CSS style sheet fi yo uare viewing the site as RTL based on the sitearea.
