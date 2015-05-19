@@ -11,7 +11,7 @@ namespace ACME.Theme.Medical {
 
     public static class WorkContextExtensions {
         public static bool IsHomepageRequest(this WorkContext workContext) {
-            var requestPath = workContext.HttpContext.Request.Path.TrimStart('/').ToLowerInvariant();
+            var requestPath = GetRequestUrl(workContext);
 
             if (string.IsNullOrEmpty(requestPath))
                 return true;
@@ -55,7 +55,7 @@ namespace ACME.Theme.Medical {
         }
 
         public static bool IsNonContentRequest(this WorkContext workContext) {
-            var requestPath = workContext.HttpContext.Request.Path.TrimStart('/').ToLowerInvariant();
+            var requestPath = GetRequestUrl(workContext);
 
             var contentRouting = workContext.Resolve<IAliasService>().Get(requestPath);
 
@@ -69,7 +69,7 @@ namespace ACME.Theme.Medical {
         }
 
         public static string GetAreaName(this WorkContext workContext) {
-            var requestPath = workContext.HttpContext.Request.Path.TrimStart('/').ToLowerInvariant();
+            var requestPath = GetRequestUrl(workContext);
 
             var contentItem = GetByPath(workContext, requestPath);
 
@@ -107,6 +107,10 @@ namespace ACME.Theme.Medical {
 
         public static bool HasAcceptedCookies(this WorkContext workContext) {
             return workContext.HttpContext.Request.Cookies.Get("user_cookies_accepted") != null;
+        }
+
+        private static string GetRequestUrl(WorkContext workContext) {
+            return workContext.HttpContext.Request.Path.TrimStart('/').ToLowerInvariant();
         }
     }
 }
