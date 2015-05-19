@@ -3,6 +3,7 @@ using System.Linq;
 using Orchard;
 using Orchard.Alias;
 using Orchard.ContentManagement;
+using Orchard.ContentManagement.Aspects;
 using Orchard.Environment.Descriptor.Models;
 using Orchard.Taxonomies.Models;
 
@@ -14,6 +15,22 @@ namespace ACME.Theme.Medical {
 
             if (string.IsNullOrEmpty(requestPath))
                 return true;
+
+            var contentItem = GetByPath(workContext, requestPath);
+
+            if (contentItem.As<ILocalizableAspect>() != null) {
+                if (contentItem.ContentItem.Parts.All(p => p.TypePartDefinition.PartDefinition.Name != "LocalizationPart"))
+                    return false;
+
+                var localizationPart = ((dynamic)contentItem).LocalizationPart;
+
+                if ((bool)localizationPart.HasTranslationGroup) {
+                    if (((IContent)localizationPart.MasterContentItem).As<IAliasAspect>().Path == string.Empty) {
+                        return true;
+                    }
+                }
+            }
+
             return false;
         }
 
