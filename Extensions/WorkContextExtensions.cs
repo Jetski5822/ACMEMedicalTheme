@@ -110,7 +110,13 @@ namespace ACME.Theme.Medical {
         }
 
         private static string GetRequestUrl(WorkContext workContext) {
-            return workContext.HttpContext.Request.Path.TrimStart('/').ToLowerInvariant();
+            var path = workContext.HttpContext.Request.Path;
+
+            if (workContext.HttpContext.Request.Url != null) {
+                path = workContext.HttpContext.Request.Url.AbsolutePath;
+            }
+
+            return path.TrimStart('/').ToLowerInvariant();
         }
     }
 }
