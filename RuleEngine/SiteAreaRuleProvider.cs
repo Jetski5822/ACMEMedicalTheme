@@ -19,10 +19,7 @@ namespace ACME.Theme.Medical.RuleEngine {
                     .Single();
 
                 ruleContext.Result = _workContext.IsAreaRequest(argument);
-                return;
             }
-
-            ruleContext.Result = false;
         }
     }
 }
