@@ -24,7 +24,7 @@ Second, Enable!
 
 ## RTL ##
 
-This theme will inject a RTL CSS style sheet fi yo uare viewing the site as RTL based on the sitearea.
+This theme will inject a RTL CSS style sheet if you are viewing the site as RTL based on the sitearea.
 
 Snippet from Resources.cshtml:
 
@@ -47,7 +47,7 @@ The out of box terms are :
 - Member
 - Partner
 
-you can use sitearea layer rules too to say, sitearea('nurse')
+you can use sitearea layer rules too to say, `sitearea('nurse')`
 
 Then to style, in Resources.cshtml you can specify what CSS you want to use based on site area.
 
@@ -86,13 +86,13 @@ Or checking if Cookies have been accepted?
 
 ## Bing ##
 
-You can add bing detail by going to the Admin screens and under the setting section, look for "Bing Settings"
+You can add Bing detail by going to the Admin screens and under the setting section, look for "Bing Settings"
 
 From here you can add you Bing Verification Code.
 
 ## Google ##
 
-You can add bing detail by going to the Admin screens and under the setting section, look for "Google Settings"
+You can add Google detail by going to the Admin screens and under the setting section, look for "Google Settings"
 
 From here you can add you Google Verification Code and other details.
 
